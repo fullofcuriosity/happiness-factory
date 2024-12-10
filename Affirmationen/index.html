@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happiness Factory</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <style>
+
+  </style>
+</head>
+
+
+<body>
+
+<header data-bs-theme="dark">
+  <!-- Bereich, der ein- und ausgeklappt werden kann -->
+  <div class="text-bg-dark collapse" id="navbarHeader">
+      <div class="container">
+          <div class="row">
+              <!-- Über mich -->
+              <div class="col-sm-8 col-md-7 py-4">
+                  <h4>Über mich</h4>
+                  <p class="text-body-secondary">
+                      Mit meinen positiven Affirmationen möchte ich dich jeden Tag daran erinnern, wie schön das Leben sein kann, wenn man den Tag mit einem guten Gedanken startet. 
+                      Alles Liebe, deine Anna
+                  </p>
+              </div>
+
+              <!-- Kontakt -->
+              <div class="col-sm-4 offset-md-1 py-4">
+                  <h4>Kontakt</h4>
+                  <ul class="list-unstyled">
+                      <li><a href="https://www.linkedin.com/in/annalisafreylinger/" class="text-white" target="_blank">Vernetze dich mit mir</a></li>
+                      
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Navbar bleibt immer sichtbar -->
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar-heart me-2" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM1 14V4h14v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1m7-6.507c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+              </svg>
+              <strong>Happiness Factory</strong>
+          </a>
+
+          <!-- Button zum Ein- und Ausklappen -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+  </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Willkommen in der <p>Happiness Factory </p><p>- dein täglicher Kraftort</p></h1>
+      <p class="lead text-body-secondary">
+        Jeder Tag bietet die Möglichkeit, unser <b>Denken und Handeln</b> in eine <b>positive Richtung</b> zu lenken und etwas <b>Wertvolles zu schaffen</b>. Unsere Vorstellungskraft hat die Fähigkeit, Zuversicht zu fördern, Hoffnung zu entfachen und innere Potenziale zu aktivieren. Mit meinen täglichen Botschaften möchte ich dich dazu anregen, deine <b>einzigartigen Talente zu erkennen</b> und dich deiner <b>besonderen Qualitäten bewusst zu werden</b>. Die Happiness Factory bietet einen Raum für <b>inspirierende Gedanken </b> und <b>Momente der inneren Harmonie</b>. Lass dich motivieren und nimm täglich <b>neue Impulse mit auf deinen Weg</b>. Deine Energie kann auch anderen Menschen Freude bringen. Es ist schön, dass du hier bist – <b>du bist genau richtig</b>.
+      </p>
+      <p>Ich möchte dir mit meinem Adventskalender der Affirmationen jeden Tag besinnliche Botschaften mit auf den Weg geben. Klicke auf den <b>Happiness-Button</b>, um die heutige Nachricht zu entdecken.</p>
+      
+      <!-- Button für die Videos -->
+      <p>
+        <button type="button" class="btn btn-warning" onclick="showVideo()">
+          <img src="./calendar-heart.svg" alt="Icon" width="20" height="20">
+        </button>
+      </p>
+
+      <!-- Video Container -->
+      <div id="videoContainer" style="display:none; margin-top: 20px; text-align:center;">
+        <video id="videoPlayer" width="100%" controls>
+          <source id="videoSource" src="" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Funktion, um das Video basierend auf dem Datum anzuzeigen
+  function showVideo() {
+    const videoFolder = './video/'; // Pfad zu deinem Video-Ordner
+    const currentDate = new Date();
+    
+    // Berechne die Anzahl der Tage seit dem 1. Januar 2024 (oder deinem Startdatum)
+    const startDate = new Date('2024-12-09');
+    const daysSinceStart = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24));
+
+    // Berechne den Index des Videos, das heute angezeigt wird (alle 14 Tage ein neues Video)
+    const videoIndex = Math.floor(daysSinceStart / 14) + 1;
+
+    // Baue den Pfad zum Video
+    const videoPath = videoFolder + 'video' + videoIndex + '.mp4';
+    
+    // Debugging-Ausgabe
+    console.log(videoPath); // Überprüfe, ob der Pfad korrekt ist
+    
+    // Setze das Video-Source-Element auf das richtige Video
+    const videoSource = document.getElementById('videoSource');
+    videoSource.src = videoPath;
+
+    // Lade das Video und zeige es an
+    const videoPlayer = document.getElementById('videoPlayer');
+    videoPlayer.load(); // Video neu laden
+    document.getElementById('videoContainer').style.display = 'block'; // Video-Container anzeigen
+  }
+</script>
+
+<style>
+  /* Zentriere das Video-Container */
+  #videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Stelle sicher, dass das Video immer innerhalb des Containers responsiv bleibt */
+  #videoPlayer {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="video-wrapper">
+        <video src="./Wonderful-Video.mp4" class="img-fluid border rounded-3 shadow-lg mb-8" alt="Wonderful day video" 
+               width="700" height="500" loading="lazy" autoplay muted>
+        </video>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="text-body-secondary ">
+    <div class="container">
+    
+
+      <p style="text-align: center;">
+        Diese Webseite verwendet <a href="https://getbootstrap.com" target="_blank" rel="noopener noreferrer">Bootstrap</a> und Design-Elemente von <a href="https://www.canva.com" target="_blank" rel="noopener noreferrer">Canva</a>.
+      </p>
+      </div>
+  </footer>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
